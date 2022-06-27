@@ -1,0 +1,34 @@
+{% extends 'BlogApp/template.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div>
+    <h1>Página Inicial</h1>
+</div>
+
+<!-- Posts display -->
+{% if posts %}
+    <div>
+        <h2>Últimos posteos</h2>
+        {% for post in posts %}
+            <div>
+                <header><h3>{{ post.title }}</h3></header>
+                <div>
+                    <p>{{ post.author }} | {{ post.date }}</p>
+                    <hr>
+                    {% if post.image %}
+                        <img src="{{post.image.url}}" style="width:200px" alt="title">
+                    {% endif %}
+                    <a button  href="{% url 'blogapp:PostDetail' post.id %}">¡Entra al POST!</a>
+                    <p>{{ post.subtitle }}</p><br>
+                    
+                </div>
+               
+            </div>
+        {% endfor %}
+{% endif %}
+
+
+{% endblock %}

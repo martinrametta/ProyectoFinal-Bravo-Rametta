@@ -1,0 +1,28 @@
+{% extends 'BlogApp/template.html' %}
+
+{% load static %}
+
+{% block content %}
+
+{% block messages %}
+
+<div>
+    <h3>
+        <ul>
+            <ol>Usuario: {{user.username}}</ol>
+            <ol>Nombre: {{user.first_name}}</ol>
+            <ol>Apellido: {{user.last_name}}</ol>
+            <ol>E-mail: {{user.email}}</ol>
+    </ul>
+    </h3>
+</div>
+
+
+<div class="w3-bar w3-padding-32 w3-center">
+    <a button type="button" href=" {% url 'users:editProfile' %} ">¿Deseas actualizar el perfil?</button></a>
+
+</div>
+
+{% endblock messages %}
+
+{% endblock %}

@@ -1,0 +1,31 @@
+
+<!-- Navbar icons -->
+<!--   -->
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+  <!-- Navbar content -->
+</nav>
+    
+    <a href="{% url 'blogapp:Home' %}"></i> Inicio</a>
+    <a href="{% url 'blogapp:Posts' %}"></i> Recetas</a>
+    <a href="{% url 'blogapp:About' %}"></i> Acerca</a>
+
+    <!-- Dropdown list -->
+    {% if user.is_authenticated %}
+        <div >
+
+            <button >
+                {{user.username}}
+            </button>
+
+            <div>
+                <a href="{% url 'users:Profile' user.id %}"><i class="fa fa-user-o"></i> Cuenta</a>
+                <a href="{% url 'blogapp:Messages' %}" ><i class="fa fa-envelope-o"></i> Mensajes</a>
+                <a href="{% url 'users:Logout' %}" ><i class="fa fa-window-close-o"></i> Salir</a>
+            </div>
+        </div>
+    {% else %}
+        <!-- Only show if user is not authenticated -->
+        <a button href="{% url 'users:Register' %}"><b>Registrate</b></a>
+        <a button href="{% url 'users:Login' %}"><b>Ingresa</b></a>
+    {% endif %}
+</div>

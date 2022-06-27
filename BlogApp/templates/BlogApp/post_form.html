@@ -1,0 +1,20 @@
+{% extends 'BlogApp/posts.html' %}
+
+{% block posts %}
+
+<!-- Form nuevo post -->
+
+<form enctype="multipart/form-data" action="{% url 'blogapp:PostForm' %}" method="POST">{% csrf_token %}
+
+    <table>
+    {{ myForm.media }}
+    {{ myForm.as_table|safe }}
+    </table>
+    
+    <!-- Botones -->
+    <div>
+        <input button type="submit" value="Submit">
+    </div>
+</form>
+
+{% endblock posts %}

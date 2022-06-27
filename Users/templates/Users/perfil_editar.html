@@ -1,0 +1,26 @@
+{% extends 'BlogApp/template.html' %}
+
+{% block content %}
+
+
+<div>
+    <h2 ><b>{{user.username}}</b></h2>
+</div>
+
+
+<div>
+    <h3>{{mensaje}}</h3>
+    <form action="{% url 'users:editProfile' %}" method="post">{% csrf_token %}
+        
+        <table>
+            {{ myForm.as_table }}
+        </table>
+        
+        <div >
+            <input button type="submit" value="Guardar cambios">
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}

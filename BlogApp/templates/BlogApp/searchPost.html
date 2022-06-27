@@ -1,0 +1,22 @@
+{% extends 'BlogApp/posts.html' %}
+
+{% block posts %}
+
+<div >
+    <h1>No existe tal receta</h1>
+</div>
+
+
+{% if post %}
+
+<h3>Titles that may interest you from your search:</h3>
+
+<ol>
+    {% for title in post %}
+        <li><a href="{% url 'blogapp:Posts' %}">{{title.title}} - {{title.date}}</a></li>
+    {% endfor %}
+</ol>
+
+{% endif %}
+
+{% endblock posts %}

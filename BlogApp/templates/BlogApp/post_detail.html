@@ -1,0 +1,42 @@
+{% extends 'BlogApp/posts.html' %}
+
+{% block posts %}
+
+<div>
+    <h4>{{post.title}}</h4>
+    <p> {{post.date}}</p>
+</div>
+
+{% if post.image %}
+        <div>
+            <img src="{{post.image.url}}" alt="" height="500px" alt="title">
+        </div>
+
+{% else %}
+        <div>
+            <p><b>{{post.author}}</b> no ha publicado una foto aún</p>
+        </div>
+{% endif %}
+
+<div>
+    <h4>{{post.subtitle}}</h4>
+</div>
+
+<div>
+    <p>{{post.content|safe}}</p>
+</div>
+
+<div >
+    <p>Autor: {{post.author}}</p>
+</div>
+
+<!-- Botones -->
+<div>
+<!-- Solo autor del posts puede modificar/eliminar -->
+{% if request.user == post.author %}
+    <a href="{% url 'blogapp:EditPost' post.id %}"> Editar </a>
+    <a href="{% url 'blogapp:PostDelete' post.id %}"> Eliminar</a>
+{% endif %}
+</div>
+
+{% endblock posts %}

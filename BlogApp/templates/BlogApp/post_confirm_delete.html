@@ -1,0 +1,15 @@
+{% extends 'BlogApp/template.html' %}
+
+{% load static %}
+
+{% block content %}
+<div>
+    <h1>¿Deseas eliminar: {{title}}?</h1>
+</div>
+
+<form method="POST">{% csrf_token %}
+    <div>
+        <input button type="submit" value="Sí">
+    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'Users/profile.html' %}
+
+{% block messages %}
+
+
+<div>
+    <h3>{{title}}</h3>
+</div>
+
+<!--  nuevo mensaje -->
+<div>
+    <form action="{% url 'blogapp:NewMessage' %}" method="POST">{% csrf_token %}
+        <table>
+            {{form.as_table}}
+        </table>
+
+        <div >
+            <input button type="submit" value="Enviar">
+        </div>
+    </form>
+</div>
+
+{% endblock messages %}

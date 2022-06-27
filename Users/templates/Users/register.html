@@ -1,0 +1,27 @@
+{% extends 'BlogApp/template.html' %}
+
+{% block content %}
+
+
+<div>
+    <span onclick="this.parentElement.style.display='none'"
+    >&times;</span>
+    <h3>Para poder registrate, debes cumplir con:</h3>
+    <ul>Nombre: menos 150 caracteres y puede incluir letras y números.<br>
+        Contraseña: al menos 8 caracteres, 1 letra, 1 número y no debe relacionarse a tus datos</ul>    
+</div>
+
+
+<form action="{% url 'users:Register' %}" method="post">{% csrf_token %}
+
+    <table>
+        {{ form.as_table }}
+        </table>
+        
+        <div>
+        <input button type="submit" value="Register">
+        </div>
+    </form>
+</form>
+
+{% endblock %}

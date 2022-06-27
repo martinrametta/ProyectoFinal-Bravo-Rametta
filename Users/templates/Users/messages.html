@@ -1,0 +1,58 @@
+{% extends 'Users/profile.html' %}
+
+{% block messages %}
+
+<div>
+    <p>Mensajes Recibidos
+    </p>
+    <table>
+        <thead>
+            <tr>
+                <th>|De:____|</th>
+                <th>|Contenido|</th>
+                <th>|Recibido|</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for msg in received %}
+                <tr>
+                    <th>{{msg.sender}}</th>
+        
+                    <td>{{msg.msg}}
+                    <td>{{msg.sent_at}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>    
+
+<div>
+    <p>Mensajes Enviados</p>
+    <table>
+        <thead>
+            <tr>
+                <th>|Para:___|</th>
+                <th>|Contenido|</th>
+                <th>|Enviado|</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for msg in sent %}
+                <tr>
+                    <th>{{msg.receiver}}</th>
+        
+                    <td>{{msg.msg}}
+                    <td>{{msg.sent_at}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>    
+
+<div>
+    <a button type="button" href=" {% url 'blogapp:NewMessage' %} ">Mensaje nuevo</button></a>
+</div>
+
+{% endblock messages %}

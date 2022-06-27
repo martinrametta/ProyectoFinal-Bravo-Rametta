@@ -1,0 +1,17 @@
+{% extends 'BlogApp/template.html' %}
+
+{% block content %}
+   
+<h3>¡Hola! Ingresa tus datos:</h3>
+<form action="{% url 'users:Login' %}" method="POST">{% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+        
+ 
+    <div>
+        <input button type="submit" value="Log In">
+    </div>
+</form>
+
+{% endblock %}

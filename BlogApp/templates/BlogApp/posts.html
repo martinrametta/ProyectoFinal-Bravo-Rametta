@@ -1,0 +1,64 @@
+{% extends 'BlogApp/template.html' %}
+
+{% block content %}
+{% block posts %}
+
+<div >
+    <h1>¡Busca las recetas que quieras!</h1>
+</div>
+
+<!-- Buscar Post -->
+    <form action="{% url 'blogapp:SearchResult' %}" method="GET">
+        <input type="text" name="title" id="title">
+        <input button type="submit"  value="Buscar">
+    </form>
+</div>
+
+{% if posts %}
+    
+    <!-- Tabla -->
+    
+    <div>
+        <table >
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Subtítulo</th>
+                    <th>Autor</th>
+                    <th>Fecha de publicación </th>
+                    <th>Contenido</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for post in posts %}
+                    <tr>
+                        <th>{{post.title}}</th>
+                        <td>{{post.subtitle}}</td>
+                        <td>{{post.author}}</td>
+                        <td>{{post.date}}</td>
+                        <td>{{post.content|slice:':50'|safe}} <a href="{% url 'blogapp:PostDetail' post.id %}">... [continua leyendo]</a></td>
+                        <td> 
+                            {% if request.user == post.author %}
+                            <!-- Botones de tabla -->
+                            <a href="{% url 'blogapp:PostDelete' post.id %}"> Borrar posteo </a>
+                            <a href="{% url 'blogapp:EditPost' post.id %}"> Editar </a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>    
+
+
+{% endif %}
+
+<!-- Botones -->
+<div >
+    <a button href="{% url 'blogapp:PostForm' %}"></i> ¡Publica tu receta!</a>
+    
+</div>
+
+{% endblock posts %}
+{% endblock %}

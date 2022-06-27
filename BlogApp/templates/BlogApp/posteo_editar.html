@@ -1,0 +1,24 @@
+{% extends 'BlogApp/posts.html' %}
+
+{% block posts %}
+
+<div >
+    <h1>Aquí podras editar: {{title}}</h1>
+</div>
+
+
+<!-- Form edit posts -->
+<form action="{{post.id}}" method="POST">{% csrf_token %}
+
+    <table>
+    {{form.media}}
+    {{form.as_table|safe}}
+    </table>
+    
+    <!-- Botones -->
+    <div>
+        <input button type="submit" value="Guardar">
+    </div>
+</form>
+
+{% endblock posts %}
